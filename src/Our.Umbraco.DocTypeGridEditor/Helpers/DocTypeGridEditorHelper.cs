@@ -118,8 +118,8 @@ namespace Our.Umbraco.DocTypeGridEditor.Helpers
                     nameObj?.ToString(),
                     contentTypes.PublishedContentType,
                     properties.ToArray(),
-                    containerNode);
-
+                    containerNode,propValues["key"].ToString());
+              
                 if (PublishedContentModelFactoryResolver.HasCurrent && PublishedContentModelFactoryResolver.Current.HasValue)
                 {
                     // Let the current model factory create a typed model to wrap our model
@@ -131,6 +131,7 @@ namespace Our.Umbraco.DocTypeGridEditor.Helpers
 
         }
 
+       
         private static PreValueCollection GetPreValuesCollectionByDataTypeId(int dataTypeId)
         {
             return (PreValueCollection)ApplicationContext.Current.ApplicationCache.RuntimeCache.GetCacheItem(

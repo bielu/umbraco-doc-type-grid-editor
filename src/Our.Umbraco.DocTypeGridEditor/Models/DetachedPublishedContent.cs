@@ -15,11 +15,12 @@ namespace Our.Umbraco.DocTypeGridEditor.Models
         private readonly IEnumerable<IPublishedProperty> _properties;
         private readonly bool _isPreviewing;
         private readonly IPublishedContent _containerNode;
-
+        private readonly string _version;
         public DetachedPublishedContent(string name,
             PublishedContentType contentType,
             IEnumerable<IPublishedProperty> properties,
             IPublishedContent containerNode = null,
+            string version = "",
             bool isPreviewing = false)
         {
             _name = name;
@@ -27,13 +28,14 @@ namespace Our.Umbraco.DocTypeGridEditor.Models
             _properties = properties;
             _containerNode = containerNode;
             _isPreviewing = isPreviewing;
+            _version = version;
         }
 
         public override int Id
         {
             get { return 0; }
         }
-
+        
         public override string Name
         {
             get { return _name; }
@@ -144,7 +146,8 @@ namespace Our.Umbraco.DocTypeGridEditor.Models
 
         public override Guid Version
         {
-            get { return _containerNode != null ? _containerNode.Version : Guid.Empty; }
+            get { return new Guid(_version); }
+
         }
 
         public override int Level
