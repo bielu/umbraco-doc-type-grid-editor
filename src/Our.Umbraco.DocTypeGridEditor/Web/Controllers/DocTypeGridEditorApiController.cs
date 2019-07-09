@@ -152,9 +152,9 @@ namespace Our.Umbraco.DocTypeGridEditor.Web.Controllers
             // Set the culture for the preview
             if (page != null)
             {
-                if (page.GetCulture() != null)
+                if (((UnpublishedContent)page).GetCulture() != null)
                 {
-                    var culture = new CultureInfo(page.GetCulture().Culture);
+                    var culture = new CultureInfo(((UnpublishedContent)page).GetCulture().Culture);
                     System.Threading.Thread.CurrentThread.CurrentCulture = culture;
                     System.Threading.Thread.CurrentThread.CurrentUICulture = culture;
                 }
